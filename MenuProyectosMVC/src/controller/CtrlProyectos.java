@@ -1,5 +1,6 @@
 package controller;
 
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 import javax.sql.rowset.CachedRowSet;
@@ -81,6 +82,12 @@ public class CtrlProyectos {
 	public static void obtenerValoresProyecto() throws SQLException {
 		int fila = view.FrmListadoProyectos.tabla.getSelectedRow();
 		CachedRowSet valores = logic.LogicProyectos.obtValoresProyecto(fila);
+		ResultSetMetaData md = valores.getMetaData();
+		
+		int col =md.getColumnCount();
+
+		int f = valores.getRow();
+		System.out.println(col);
 		
 		//refrescaDatos();
 		//rerutn valores;
