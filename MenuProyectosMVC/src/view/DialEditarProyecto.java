@@ -31,12 +31,7 @@ public class DialEditarProyecto extends JDialog {
 		getContentPane().add(lblNombre);
 		
 		textNombre = new JTextField();
-		try {
-			controller.CtrlProyectos.obtenerValoresProyecto();
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
-		textNombre.setText("hola");
+		textNombre.setText(controller.CtrlProyectos.nombre);
 		textNombre.setBounds(183, 67, 86, 20);
 		getContentPane().add(textNombre);
 		textNombre.setColumns(10);
@@ -45,28 +40,34 @@ public class DialEditarProyecto extends JDialog {
 		lblPresupuesto.setBounds(81, 117, 71, 14);
 		getContentPane().add(lblPresupuesto);
 		
+		
 		textPresupuesto = new JTextField();
 		textPresupuesto.setBounds(183, 114, 86, 20);
 		getContentPane().add(textPresupuesto);
 		textPresupuesto.setColumns(10);
+		textPresupuesto.setText(controller.CtrlProyectos.presupuesto);
 		
 		JLabel lblFechaInicio = new JLabel("Fecha Inicio");
 		lblFechaInicio.setBounds(82, 156, 70, 22);
 		getContentPane().add(lblFechaInicio);
 		
+		
 		textFechaIni = new JTextField();
 		textFechaIni.setBounds(183, 157, 86, 20);
 		getContentPane().add(textFechaIni);
 		textFechaIni.setColumns(10);
+		textFechaIni.setText(controller.CtrlProyectos.fechaIni);
 		
 		JLabel lblFechaFin = new JLabel("Fecha Fin");
 		lblFechaFin.setBounds(81, 202, 71, 29);
 		getContentPane().add(lblFechaFin);
 		
+		
 		textFechaFin = new JTextField();
 		textFechaFin.setBounds(183, 206, 86, 20);
 		getContentPane().add(textFechaFin);
 		textFechaFin.setColumns(10);
+		textFechaFin.setText(controller.CtrlProyectos.fechaFin);
 		
 		JButton botonEditaProyecto = new JButton("Guardar Cambios");
 		botonEditaProyecto.setBounds(222, 263, 115, 29);
@@ -80,7 +81,11 @@ public class DialEditarProyecto extends JDialog {
 		botonEditaProyecto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				controller.CtrlProyectos.editarProyecto();
+				try {
+					controller.CtrlProyectos.editarProyecto();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 				JOptionPane.showMessageDialog(null,"Cambios guardados!");
 			}
 		});

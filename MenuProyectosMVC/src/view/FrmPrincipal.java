@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JButton;
 
 public class FrmPrincipal extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -33,10 +34,12 @@ public class FrmPrincipal extends JFrame {
 		Menu menuGestion = new Menu("GESTION");
 		MenuItem itemProyectos = new MenuItem("1. Proyectos");
 		MenuItem itemTrabajadores = new MenuItem("2. Trabajadores");
+		MenuItem itemGestion = new MenuItem("1. Gestion");
 		MenuItem itemEquipos = new MenuItem("1. Equipos");
 		menuBase.add(itemProyectos);
 		menuBase.add(itemTrabajadores);
 		menuGestion.add(itemEquipos);
+		menuBase.add(menuGestion);
 		
 		barraMenu.add(menuBase);
 		barraMenu.add(menuGestion);
@@ -59,6 +62,13 @@ public class FrmPrincipal extends JFrame {
 				controller.CtrlPrincipal.opcEquipos();
 			}
 		});
+		
+		itemGestion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.CtrlPrincipal.opcEquipos();
+			}
+		});
+
 
 		MenuItem opcionSalir = new MenuItem("Salir");
 		opcionSalir.addActionListener(new ActionListener() {

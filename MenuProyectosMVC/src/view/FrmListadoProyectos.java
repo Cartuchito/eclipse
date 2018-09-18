@@ -13,7 +13,6 @@ import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -30,7 +29,7 @@ public class FrmListadoProyectos extends JFrame {
 	private final JLabel lblTituloListado = new JLabel("Listado de Proyectos");
 
 	public FrmListadoProyectos() {
-		
+
 		int anchoV = 400;
 		int altoV = 400;
 		Color miColor = new Color(88, 143, 174);
@@ -53,7 +52,7 @@ public class FrmListadoProyectos extends JFrame {
 		getContentPane().add(botonNuevo);
 		botonNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				try {
 					controller.CtrlProyectos.dialNuevoProyecto();
 				} catch (SQLException e1) {
@@ -68,13 +67,9 @@ public class FrmListadoProyectos extends JFrame {
 		botonEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				int resp = JOptionPane.showConfirmDialog(null, "¿Desea eliminar el proyecto?", "Borrar Trabajador",
-						JOptionPane.YES_NO_OPTION);
-
-				if (resp == 0) {
-					controller.CtrlProyectos.eliminaProyecto();
-				}
+				controller.CtrlProyectos.eliminaProyecto();
 			}
+
 		});
 
 		botonEditar.setBounds(210, 280, 70, 30);
@@ -88,19 +83,28 @@ public class FrmListadoProyectos extends JFrame {
 
 		botonInfo.setBounds(290, 280, 70, 30);
 		getContentPane().add(botonInfo);
+		botonInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					controller.CtrlProyectos.dialInfoProyecto();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(50, 70, 299, 182);
 		getContentPane().add(scrollPane);
-		
+
 		tabla = new JTable();
 		scrollPane.setViewportView(tabla);
 		lblTituloListado.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTituloListado.setFont(new Font("Arial Black", Font.PLAIN, 14));
 		lblTituloListado.setBounds(94, 24, 216, 35);
-		
+
 		getContentPane().add(lblTituloListado);
-		
+
 		setSize(400, 400);
 		setVisible(true);
 	}
