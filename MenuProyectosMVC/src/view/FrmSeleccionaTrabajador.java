@@ -49,6 +49,8 @@ public class FrmSeleccionaTrabajador extends JFrame{
 		getContentPane().add(botonSelecciona);
 		botonSelecciona.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				controller.CtrlEquipos.seleccionTrabajador();
+				dispose();
 			}
 		});	
 

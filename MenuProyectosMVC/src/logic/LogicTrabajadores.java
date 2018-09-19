@@ -12,6 +12,15 @@ public class LogicTrabajadores {
 	public static CachedRowSet getNombresTrabajadores() throws SQLException {
 		return databasemanager.DBSQLServer.consultaSQL("SELECT nombre, apellidos FROM Trabajador_EPC");
 	}
+	
+	public static CachedRowSet getSelectedTrabajador(int strPK) throws SQLException {
+		return databasemanager.DBSQLServer.consultaSQL("SELECT nombre, apellidos FROM Trabajador_EPC WHERE IDTRABAJADOR = " + strPK);
+	}
+	
+	public static CachedRowSet getSelectedCargo(int strPK) throws SQLException {
+		return databasemanager.DBSQLServer.consultaSQL("SELECT cargo FROM Cargo_EPC WHERE IDCARGO = " + strPK);
+	}
+
 
 	public static void insertaTrabajador(String DNI, String nombre, String apellidos, String genero) throws SQLException {
 		System.out.println(DNI+","+nombre+","+apellidos+","+genero);

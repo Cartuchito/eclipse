@@ -49,7 +49,8 @@ public class FrmSeleccionaCargo extends JFrame{
 		getContentPane().add(botonSelecciona);
 		botonSelecciona.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//nada
+				controller.CtrlEquipos.seleccionCargo();
+				dispose();
 			}
 		});	
 

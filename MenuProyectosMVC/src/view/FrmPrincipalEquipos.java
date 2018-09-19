@@ -2,7 +2,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.ScrollPane;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,18 +13,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import java.awt.Font;
 import javax.swing.SwingConstants;
 
 
 public class FrmPrincipalEquipos extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private JTable tablaTrab;
-	private JTable tablaCargos;
 	public static JTable tablaProyect;
-	private JScrollPane scrollPaneProyec;
-	private JScrollPane scrollPaneTrab;
+	public static JScrollPane scrollPaneProyec;
+	public static JScrollPane scrollPaneTrab;
+	public static JTable tableTrabajadores;
+	public static JTable tableCargos;
 
 	public FrmPrincipalEquipos() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,7 +46,7 @@ public class FrmPrincipalEquipos extends JFrame {
 		JLabel lblProyectos = new JLabel("Proyectos");
 		lblProyectos.setHorizontalAlignment(SwingConstants.CENTER);
 		lblProyectos.setFont(new Font("Arial Black", Font.PLAIN, 13));
-		lblProyectos.setBounds(125, 25, 118, 16);
+		lblProyectos.setBounds(138, 25, 118, 16);
 		getContentPane().add(lblProyectos);
 		
 		JButton btnSeleccionaTrabajador = new JButton("A\u00F1adir Trabajador");
@@ -76,24 +75,32 @@ public class FrmPrincipalEquipos extends JFrame {
 		scrollPaneTrab.setBounds(52, 198, 155, 100);
 		getContentPane().add(scrollPaneTrab);
 		
-		ScrollPane scrollPaneCargo = new ScrollPane();
-		scrollPaneCargo.setBounds(204, 198, 142, 100);
-		getContentPane().add(scrollPaneCargo);
-		
-		tablaTrab = new JTable();
-		tablaTrab.setBounds(52, 198, 155, 100);
-		getContentPane().add(tablaTrab);
-		
-		tablaCargos = new JTable();
-		tablaCargos.setBounds(204, 198, 142, 100);
-		getContentPane().add(tablaCargos);
+		tableTrabajadores = new JTable();
+		scrollPaneTrab.setViewportView(tableTrabajadores);
 		
 		scrollPaneProyec = new JScrollPane();
-		scrollPaneProyec.setBounds(50, 52, 260, 89);
+		scrollPaneProyec.setBounds(82, 52, 228, 89);
 		getContentPane().add(scrollPaneProyec);
 
 		tablaProyect = new JTable();
 		scrollPaneProyec.setViewportView(tablaProyect);
+		
+		JScrollPane scrollPaneCargos = new JScrollPane();
+		scrollPaneCargos.setBounds(208, 198, 155, 100);
+		getContentPane().add(scrollPaneCargos);
+		
+		tableCargos = new JTable();
+		scrollPaneCargos.setViewportView(tableCargos);
+		
+		JButton btnNewButton = new JButton("Crear Equipo");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//controller.CtrlEquipos.crearEquipo();
+				//dispose();
+			}
+		});
+		btnNewButton.setBounds(138, 320, 118, 30);
+		getContentPane().add(btnNewButton);
 
 		Dimension tamPantalla = Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds((tamPantalla.width - anchoV) / 2, (tamPantalla.height - altoV) / 2, anchoV, altoV);

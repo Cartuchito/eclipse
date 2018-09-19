@@ -23,23 +23,6 @@ public class CtrlProyectos {
 
 		new view.DialNuevoProyecto();
 	}
-
-	/*public static void refrescaDatosProyectos(){
-		try {
-			// obtener datos de la BD
-			CachedRowSet datos = logic.LogicProyectos.getListaProyectos();
-			// convertimos los datos obtenidos en un modelo de JTable
-			DefaultTableModel modelo = utils.Gui.generarModeloJTable(datos);
-			// pintamos el JTable en la vista
-			view.FrmListadoProyectos.tabla.setModel(modelo);
-			TableColumn  columna = view.FrmListadoProyectos.tabla.getColumnModel().getColumn(0);
-			columna.setMaxWidth(0);
-			columna.setMinWidth(0);
-			columna.setPreferredWidth(0);
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
-	}*/
 	
 	public static void refrescaDatosProyectos(){
 	try {
